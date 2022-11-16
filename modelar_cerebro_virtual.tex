@@ -516,7 +516,68 @@
   \end{itemize}
   \begin{figure}
     \centering
-    \includegraphics[scale=0.5]{img/MLP.png}
+    \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.75}, square/.style={regular polygon,regular polygon sides=4}]
+      \node at (0,1) [draw, square] (x1) {$x_1$};
+      \node at (0,0) [draw, square] (x2) {$x_2$};
+      \node at (0,-1) [draw, square] (x3) {$x_3$};
+
+      \node at (3,1.5) [draw, circle, inner sep=0.3cm] (hl1_1) { };
+      \node at (3,0.5) [draw, circle, inner sep=0.3cm] (hl1_2) { };
+      \node at (3,-0.5) [draw, circle, inner sep=0.3cm] (hl1_3) { };
+      \node at (3,-1.5) [draw, circle, inner sep=0.3cm] (hl1_4) { };
+
+      \node at (6,1.5) [draw, circle, inner sep=0.3cm] (hl2_1) { };
+      \node at (6,0.5) [draw, circle, inner sep=0.3cm] (hl2_2) { };
+      \node at (6,-0.5) [draw, circle, inner sep=0.3cm] (hl2_3) { };
+      \node at (6,-1.5) [draw, circle, inner sep=0.3cm] (hl2_4) { };
+
+      \node at (9,0) [draw, square] (y) {$\hat y$};
+
+      \draw[-stealth] (x1) -- (hl1_1);
+      \draw[-stealth] (x1) -- (hl1_2);
+      \draw[-stealth] (x1) -- (hl1_3);
+      \draw[-stealth] (x1) -- (hl1_4);
+
+      \draw[-stealth] (x2) -- (hl1_1);
+      \draw[-stealth] (x2) -- (hl1_2);
+      \draw[-stealth] (x2) -- (hl1_3);
+      \draw[-stealth] (x2) -- (hl1_4);
+
+      \draw[-stealth] (x3) -- (hl1_1);
+      \draw[-stealth] (x3) -- (hl1_2);
+      \draw[-stealth] (x3) -- (hl1_3);
+      \draw[-stealth] (x3) -- (hl1_4);
+
+      \draw[-stealth] (hl1_1) -- (hl2_1);
+      \draw[-stealth] (hl1_1) -- (hl2_2);
+      \draw[-stealth] (hl1_1) -- (hl2_3);
+      \draw[-stealth] (hl1_1) -- (hl2_4);
+
+      \draw[-stealth] (hl1_2) -- (hl2_1);
+      \draw[-stealth] (hl1_2) -- (hl2_2);
+      \draw[-stealth] (hl1_2) -- (hl2_3);
+      \draw[-stealth] (hl1_2) -- (hl2_4);
+
+      \draw[-stealth] (hl1_3) -- (hl2_1);
+      \draw[-stealth] (hl1_3) -- (hl2_2);
+      \draw[-stealth] (hl1_3) -- (hl2_3);
+      \draw[-stealth] (hl1_3) -- (hl2_4);
+
+      \draw[-stealth] (hl1_4) -- (hl2_1);
+      \draw[-stealth] (hl1_4) -- (hl2_2);
+      \draw[-stealth] (hl1_4) -- (hl2_3);
+      \draw[-stealth] (hl1_4) -- (hl2_4);
+
+      \draw[-stealth] (hl2_1) -- (y);
+      \draw[-stealth] (hl2_2) -- (y);
+      \draw[-stealth] (hl2_3) -- (y);
+      \draw[-stealth] (hl2_4) -- (y);
+
+      \node at (0,-2) (capa_entrada) {capa de entrada};
+      \node at (3,-2.5) (capa_oculta_1) {capa oculta 1};
+      \node at (6,-2.5) (capa_oculta_2) {capa oculta 2};
+      \node at (9,-1) (capa_salida) {capa de salida};
+    \end{tikzpicture}
     \caption{Perceptrón multicapa.}
   \end{figure}
 \end{frame}
