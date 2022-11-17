@@ -114,6 +114,26 @@
 }
 \setcounter{tocdepth}{1}
 
+%%%%%%%%%
+% Vídeo
+%%%%%%%%%
+
+\usepackage{movie15}
+
+\newcommand{\playVideoMovie}[3]{%
+  \includemovie[autoplay,
+  controls, % Show Play/Stop buttons
+  attach=false
+  ]{#1}{#2}{#3}}
+
+%%%%%%%%%
+% Macros
+%%%%%%%%%
+
+\def\WW{\boldsymbol{W}}
+\def\bb{\boldsymbol{b}}
+\def\yy{\boldsymbol{y}}
+\def\xx{\boldsymbol{x}}
 
 %======================================================================
 \begin{document}
@@ -362,7 +382,7 @@
 \end{frame}
 
 \begin{frame}{Modelo 3D de flujo de corriente en el estrecho}
-  \includemedia{\framebox[\linewidth]{\rule{0pt}{0.8\textheight}}}{video/gibraltar-tubes-3d-30s.mp4}
+  \playVideoMovie{221.67px}{211.67px}{video/gibraltar-tubes-3d-30s.mp4}
   \par\hfill\scriptsize Vídeo: gibraltar-tubes-3d-30s.mp4
 \end{frame}
 
@@ -417,12 +437,12 @@
 \end{frame}
 
 \begin{frame}{Tsunami frente al cabo de San Vicente}
-  \includemedia{\framebox[\linewidth]{\rule{0pt}{0.8\textheight}}}{video/tsunami2.avi}
+  \playVideoMovie{221.67px}{211.67px}{video/tsunami2.avi}
   \par\hfill\scriptsize \href{https://www.youtube.com/watch?v=DkGmz0na00g}{Vídeo: tsunami2.avi}
 \end{frame}
 
 \begin{frame}{Matemáticas en Ingeniería}
-  \includemedia{\framebox[\linewidth]{\rule{0pt}{0.8\textheight}}}{video/vortices-von-karman.avi}
+  \playVideoMovie{}{}{video/vortices-von-karman.avi}
   \par\hfill\scriptsize \href{https://www.youtube.com/watch?v=E1fPolQ-uTI}{Vídeo: Cuerpo circular sumergido, vórtices de Von Karman}.
 \end{frame}
 
@@ -680,7 +700,7 @@
     \item Capas ocultas:
     \begin{itemize}
       \item $\mathcal{N}_1(\theta;x)=\sigma(W_1x+b_1)$;
-      \item $\mathcal{N}_2(\theta;x)=\sigma(W_2\mathcal{N}_1+b_1);$
+      \item $\mathcal{N}_2(\theta;x)=\sigma(W_2\mathcal{N}_1+b_2);$
       \item $\cdots$
       \item $\mathcal{N}_M(\theta;x)=\sigma(W_M\mathcal{N}_{M-1}+b_M).$
     \end{itemize}
