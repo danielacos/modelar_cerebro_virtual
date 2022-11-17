@@ -130,10 +130,9 @@
 %%%%%%%%%
 
 \definecolor{lightred}{RGB}{255,210,202}
-\definecolor{lightorange}{RGB}{255,234,199}
 \definecolor{lightblue}{HTML}{EEF4F8}
-\definecolor{lightyellow}{HTML}{FAF0E1}
 \definecolor{lightgreen}{HTML}{F6FFE6}
+\definecolor{bananamania}{rgb}{0.98, 0.91, 0.71}
 
 %%%%%%%%%
 % Macros
@@ -554,25 +553,25 @@
   \begin{figure}
     \centering
     \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.75}, square/.style={regular polygon,regular polygon sides=4}]
-      \draw[fill=lightred] (1,-1.7) rectangle (-1,1.7);
-      \draw[fill=red] (7,-2.2) rectangle (2,2.2);
-      \draw[fill=red] (10,-0.7) rectangle (8,0.7);
+      \draw[fill=lightred, draw=white] (1,-1.7) rectangle (-1,1.7);
+      \draw[fill=lightblue, draw=white] (7,-2.2) rectangle (2,2.2);
+      \draw[fill=lightgreen!95!black, draw=white] (10,-0.7) rectangle (8,0.7);
 
-      \node at (0,1) [draw, square] (x1) {$x_1$};
-      \node at (0,0) [draw, square] (x2) {$x_2$};
-      \node at (0,-1) [draw, square] (x3) {$x_3$};
+      \node[fill=white] at (0,1) [draw, square] (x1) {$x_1$};
+      \node[fill=white] at (0,0) [draw, square] (x2) {$x_2$};
+      \node[fill=white] at (0,-1) [draw, square] (x3) {$x_3$};
 
-      \node at (3,1.5) [draw, circle, inner sep=0.3cm] (hl1_1) { };
-      \node at (3,0.5) [draw, circle, inner sep=0.3cm] (hl1_2) { };
-      \node at (3,-0.5) [draw, circle, inner sep=0.3cm] (hl1_3) { };
-      \node at (3,-1.5) [draw, circle, inner sep=0.3cm] (hl1_4) { };
+      \node[fill=white] at (3,1.5) [draw, circle, inner sep=0.3cm] (hl1_1) { };
+      \node[fill=white] at (3,0.5) [draw, circle, inner sep=0.3cm] (hl1_2) { };
+      \node[fill=white] at (3,-0.5) [draw, circle, inner sep=0.3cm] (hl1_3) { };
+      \node[fill=white] at (3,-1.5) [draw, circle, inner sep=0.3cm] (hl1_4) { };
 
-      \node at (6,1.5) [draw, circle, inner sep=0.3cm] (hl2_1) { };
-      \node at (6,0.5) [draw, circle, inner sep=0.3cm] (hl2_2) { };
-      \node at (6,-0.5) [draw, circle, inner sep=0.3cm] (hl2_3) { };
-      \node at (6,-1.5) [draw, circle, inner sep=0.3cm] (hl2_4) { };
+      \node[fill=white] at (6,1.5) [draw, circle, inner sep=0.3cm] (hl2_1) { };
+      \node[fill=white] at (6,0.5) [draw, circle, inner sep=0.3cm] (hl2_2) { };
+      \node[fill=white] at (6,-0.5) [draw, circle, inner sep=0.3cm] (hl2_3) { };
+      \node[fill=white] at (6,-1.5) [draw, circle, inner sep=0.3cm] (hl2_4) { };
 
-      \node at (9,0) [draw, square] (y) {$\hat y$};
+      \node[fill=white] at (9,0) [draw, square] (y) {$\hat y$};
 
       \draw[-stealth] (x1) -- (hl1_1);
       \draw[-stealth] (x1) -- (hl1_2);
@@ -614,10 +613,10 @@
       \draw[-stealth] (hl2_3) -- (y);
       \draw[-stealth] (hl2_4) -- (y);
 
-      \node at (0,-2) (capa_entrada) {capa de entrada};
-      \node at (3,-2.5) (capa_oculta_1) {capa oculta 1};
-      \node at (6,-2.5) (capa_oculta_2) {capa oculta 2};
-      \node at (9,-1) (capa_salida) {capa de salida};
+      \node at (0,-2) (capa_entrada) {\textcolor{lightred!70!black}{capa de entrada}};
+      \node at (3,-2.5) (capa_oculta_1) {\textcolor{lightblue!60!black}{capa oculta 1}};
+      \node at (6,-2.5) (capa_oculta_2) {\textcolor{lightblue!60!black}{capa oculta 2}};
+      \node at (9,-1) (capa_salida) {\textcolor{lightgreen!70!black}{capa de salida}};
     \end{tikzpicture}
     \caption{Perceptrón multicapa.}
   \end{figure}
@@ -734,7 +733,7 @@
       $$
         \alert{\theta^{k+1}} = \theta^k - \alpha\nabla_\theta \mathcal{L}(\theta^k;x).
       $$
-      \item Este algoritmo se hace considerando miles o cientos de miles de datos de entrada $(x,y)$.
+      \item Este algoritmo se realiza considerando miles o cientos de miles de datos de entrada $(x,y)$.
       \item Este proceso de entrenamiento se conoce como \structure{backward propagation}.
     \end{itemize}
     \item Cuando escogemos los parámetros adecuados decimos que la red neuronal está entrenada.
@@ -748,7 +747,7 @@
   \begin{itemize}
     \item Datos de entrada: $\alert{(U_j,\Lambda_j)}$.
     \begin{itemize}
-      \item $U_j$ es el valor de la solución del modelo $u$, para un vector de parámetos $\Lambda_j$.
+      \item $U_j$ es el vector de valores de control de la solución del modelo $u$, para un vector de parámetos $\Lambda_j$.
     \end{itemize}
     \item Entrenamos la red neuronal a través de los pasos anteriores:
     \begin{itemize}
@@ -758,14 +757,14 @@
     \item Red neuronal entrenada para que $\alert{\hat y(\hat \theta,U_i)\approx \Lambda_i}$.
     \item Esperamos que para los datos reales, $\alert{N}$:
     $$
-    \alert{\hat y(\hat \theta,N)= \Lambda},
+    \alert{\hat y(\hat \theta,N)= \hat\Lambda},
     $$
     tal que
     $$
-    \alert{U^\Lambda\approx N}.
+    \alert{U^{\hat\Lambda}\approx N}.
     $$
     \begin{itemize}
-      \item $U^\Lambda$ es el valor de la solución del modelo $u$, para el vector de parámetos $\Lambda$ obtenido con la red neuronal.
+      \item $U^{\hat\Lambda}$ es el vector de valores de control de la solución del modelo $u$, para el vector de parámetos $\hat\Lambda$ obtenido con la red neuronal.
     \end{itemize}
   \end{itemize}
 \end{frame}
