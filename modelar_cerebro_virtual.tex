@@ -126,6 +126,16 @@
   ]{#1}{#2}{#3}}
 
 %%%%%%%%%
+% Colors
+%%%%%%%%%
+
+\definecolor{lightred}{RGB}{255,210,202}
+\definecolor{lightorange}{RGB}{255,234,199}
+\definecolor{lightblue}{HTML}{EEF4F8}
+\definecolor{lightyellow}{HTML}{FAF0E1}
+\definecolor{lightgreen}{HTML}{F6FFE6}
+
+%%%%%%%%%
 % Macros
 %%%%%%%%%
 
@@ -534,16 +544,20 @@
 
 \begin{frame}{¿Qué son las redes neuronales?}
   \begin{itemize}
-    \item Herramienta de inteligencia artificial:
+    \item Herramienta de \structure{inteligencia artificial}:
     \begin{itemize}
       \item Aprendizaje supervisado.
       \item Deep learning.
     \end{itemize}
-    \item Desde un punto de vista matemático: composición de funciones dependientes de parámetros.
+    \item Desde un punto de vista matemático: \structure{composición de funciones dependientes de parámetros}.
   \end{itemize}
   \begin{figure}
     \centering
     \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.75}, square/.style={regular polygon,regular polygon sides=4}]
+      \draw[fill=lightred] (1,-1.7) rectangle (-1,1.7);
+      \draw[fill=red] (7,-2.2) rectangle (2,2.2);
+      \draw[fill=red] (10,-0.7) rectangle (8,0.7);
+
       \node at (0,1) [draw, square] (x1) {$x_1$};
       \node at (0,0) [draw, square] (x2) {$x_2$};
       \node at (0,-1) [draw, square] (x3) {$x_3$};
@@ -611,19 +625,19 @@
 
 \begin{frame}{¿Cómo se construye un perceptrón multicapa?}
   \begin{itemize}
-    \item Datos de entrada y salida conocidos: $(x,y)$.
+    \item Datos de entrada y salida conocidos: $\alert{(x,y)}$.
     \item Parámetros:
     \begin{itemize}
-      \item Matrices $W_i$.
-      \item Vectores $b_i$.
-      \item En general, $\theta$ representa al conjunto de parámetros.
+      \item Matrices $\alert{W_i}$.
+      \item Vectores $\alert{b_i}$.
+      \item En general, $\alert{\theta}$ representa al conjunto de parámetros.
     \end{itemize}
-    \item Función de activación $\sigma$:
+    \item Función de activación $\alert{\sigma}$:
     \begin{itemize}
-      \item Sigmoide.
-      \item Tanh.
-      \item ReLU.
-      \item Softmax.
+      \item \structure{Sigmoide}.
+      \item \structure{Tanh}.
+      \item \structure{ReLU}.
+      \item \structure{Softmax}.
     \end{itemize}
   \end{itemize}
   \begin{figure}
@@ -656,7 +670,7 @@
       %v\node at (3.75,0.25) (W2) {$W_1$};
       % \node at (6.25,0.25) (W3) {$W_3$};
     \end{tikzpicture}
-    \caption{Composición de un perceptrón multicapa (forward propagation).}
+    \caption{Composición de un perceptrón multicapa (\structure{forward propagation}).}
   \end{figure}
 \end{frame}
 
@@ -691,19 +705,19 @@
       %v\node at (3.75,0.25) (W2) {$W_1$};
       % \node at (6.25,0.25) (W3) {$W_3$};
     \end{tikzpicture}
-    \caption{Composición de un perceptrón multicapa (forward propagation).}
+    \caption{Composición de un perceptrón multicapa (\structure{forward propagation}).}
   \end{figure}
 
   \begin{itemize}
-    \item Capa de entrada: $x$.
+    \item Capa de entrada: $\alert{x}$.
     \item Capas ocultas:
     \begin{itemize}
-      \item $\mathcal{N}_1(\theta;x)=\sigma(W_1x+b_1)$;
-      \item $\mathcal{N}_2(\theta;x)=\sigma(W_2\mathcal{N}_1+b_2);$
+      \item $\alert{\mathcal{N}_1(\theta;x)}=\sigma(W_1x+b_1)$;
+      \item $\alert{\mathcal{N}_2(\theta;x)}=\sigma(W_2\mathcal{N}_1+b_2);$
       \item $\cdots$
-      \item $\mathcal{N}_M(\theta;x)=\sigma(W_M\mathcal{N}_{M-1}+b_M).$
+      \item $\alert{\mathcal{N}_M(\theta;x)}=\sigma(W_M\mathcal{N}_{M-1}+b_M).$
     \end{itemize}
-    \item Capa de salida: $\hat y(\theta;x)=\sigma(W_{M+1}\mathcal{N}_{M}+b_{M+1})$.
+    \item Capa de salida: $\alert{\hat y(\theta;x)}=\sigma(W_{M+1}\mathcal{N}_{M}+b_{M+1})$.
   \end{itemize}
 \end{frame}
 
@@ -712,43 +726,43 @@
     \item La potencia de la red neuronal viene de una adecuada elección de los parámetros.
     \item Para ello, definimos una función de pérdida. Por ejemplo,
     $$
-    \mathcal{L}(\theta;x)=\|y(x)-\hat y(\theta;x)\|_2^2.
+    \alert{\mathcal{L}(\theta;x)}=\|y(x)-\hat y(\theta;x)\|_2^2.
     $$
     \item Escogemos los parámetros que minimicen $\mathcal{L}(\theta;x)$.
     \begin{itemize}
       \item Por ejemplo, usando métodos de descenso de gradiente:
       $$
-        \theta^{k+1} = \theta^k - \alpha\nabla_\theta \mathcal{L}(\theta^k;x).
+        \alert{\theta^{k+1}} = \theta^k - \alpha\nabla_\theta \mathcal{L}(\theta^k;x).
       $$
       \item Este algoritmo se hace considerando miles o cientos de miles de datos de entrada $(x,y)$.
-      \item Este proceso de entrenamiento se conoce como backward propagation.
+      \item Este proceso de entrenamiento se conoce como \structure{backward propagation}.
     \end{itemize}
     \item Cuando escogemos los parámetros adecuados decimos que la red neuronal está entrenada.
     \begin{itemize}
-      \item Entonces, esperamos que $\hat y(\hat \theta;x)\approx y(x)$.
+      \item Entonces, esperamos que $\alert{\hat y(\hat \theta;x)\approx y(x)}$.
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Ajuste de parámetros con redes neuronales}
   \begin{itemize}
-    \item Datos de entrada: $(U_j,\Lambda_j)$.
+    \item Datos de entrada: $\alert{(U_j,\Lambda_j)}$.
     \begin{itemize}
       \item $U_j$ es el valor de la solución del modelo $u$, para un vector de parámetos $\Lambda_j$.
     \end{itemize}
     \item Entrenamos la red neuronal a través de los pasos anteriores:
     \begin{itemize}
-      \item Forward propagation.
-      \item Backward propagation.
+      \item \structure{Forward propagation}.
+      \item \structure{Backward propagation}.
     \end{itemize}
-    \item Red neuronal $\hat y(\hat \theta,U_i)\approx \Lambda_i$.
-    \item Esperamos que para los datos reales, $N$:
+    \item Red neuronal entrenada para que $\alert{\hat y(\hat \theta,U_i)\approx \Lambda_i}$.
+    \item Esperamos que para los datos reales, $\alert{N}$:
     $$
-    \hat y(\hat \theta,N)= \Lambda,
+    \alert{\hat y(\hat \theta,N)= \Lambda},
     $$
     tal que
     $$
-    U^\Lambda\approx N.
+    \alert{U^\Lambda\approx N}.
     $$
     \begin{itemize}
       \item $U^\Lambda$ es el valor de la solución del modelo $u$, para el vector de parámetos $\Lambda$ obtenido con la red neuronal.
