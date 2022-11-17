@@ -543,6 +543,41 @@
   \end{center}
 \end{frame}
 
+\begin{frame}{Modelización matemática: quimiotaxis}
+  \textbf{Quimiotaxis}
+  \begin{quote}
+    \small
+  \em «Fenómeno en el que organismos
+  unicelulares (\structure<1>{células}) o pluricelulares dirigen sus movimientos como respuesta a un
+    \alert<1>{estímulo químico}»
+\end{quote}
+
+\bigskip
+Ecuaciones (clásicas) de Keller-Segel: hallar $u(x,t)$, \structure<1>{células}, y
+$v(x,t)$, \alert<1>{estímulo químico}, solución del sistema de EDP:
+\begin{align*}
+  u_t - \Delta u + \alert<2>{\nabla\cdot (u \nabla v)} &= 0,
+  \\
+  v_t - \Delta v + v - u &= 0,
+  \\
+  + \text{ condiciones }&\text{iniciales y de contorno.}
+\end{align*}
+\begin{itemize}
+\item <2> Término de \alert{quimioatracción} de $u$ hacia $\nabla v$ !!!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modelo de migración de neuroblastos hacia OB}
+  \bigskip
+    \begin{flushright}
+    \includegraphics[width=0.4\linewidth]{img/neuroblastos-roedor-anotado}
+    \end{flushright}
+    $$
+
+    $$
+\end{frame}
+
+
 % #################### REDES NEURONALES #####################
 
 \begin{frame}{¿Qué son las redes neuronales?}
