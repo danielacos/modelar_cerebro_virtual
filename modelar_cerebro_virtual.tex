@@ -106,12 +106,18 @@
 %\newtheorem{remark}{Remark}
 %\newtheorem{theorem}{Theorem}
 
+\definecolor{OBcolor}{rgb}{0.2, 0.2, 0.8}
 \newcommand\gris{\color{PHDgray}}
 \newcommand\amarillo{\color{PHDyellow}}
 \newcommand\video[2][0.8\textheight]{% #1: file #2: height
   \includemedia{\framebox[\linewidth]{\rule{0pt}{#2}}}{#1}
   \par\hfill\scriptsize Vídeo: #1
 }
+\newcommand{\llaveizq}[1]{$\left\{
+  \begin{tabular}{@{}l@{}}#1\end{tabular}\right.$}
+\newcommand{\llaveder}[1]{$\left.
+  \begin{tabular}{@{}l@{}}#1\end{tabular}\right\}$}
+
 \setcounter{tocdepth}{1}
 
 
@@ -537,9 +543,9 @@
 \end{frame}
 
 \begin{frame}{Distribución de neuroblastos en el cerebro de un roedor}
-  \bigskip
+  \medskip
   \begin{center}
-    \includegraphics[width=0.9\linewidth]{img/neuroblastos-roedor-anotado}
+    \includegraphics[width=0.8\linewidth]{img/neuroblastos-roedor-anotado}
   \end{center}
 \end{frame}
 
@@ -548,23 +554,30 @@
   \begin{quote}
     \small
   \em «Fenómeno en el que organismos
-  unicelulares (\structure<1>{células}) o pluricelulares dirigen sus movimientos como respuesta a un
-    \alert<1>{estímulo químico}»
+  unicelulares (\alert<1>{células}) o pluricelulares dirigen sus movimientos como respuesta a un
+    \structure<1>{estímulo químico}»
 \end{quote}
 
 \bigskip
-Ecuaciones (clásicas) de Keller-Segel: hallar $u(x,t)$, \structure<1>{células}, y
-$v(x,t)$, \alert<1>{estímulo químico}, solución del sistema de EDP:
+Ecuaciones de Keller-Segel (sistema de EDP)...
+\par\hfill
+...hallar \llaveizq{$u(x,t)$, \alert<1>{\textbf{densidad de células}} en $(x,t)$
+  \\[0.2em]
+  $v(x,t)$, \structure<1>{estímulo químico} tales que:}
 \begin{align*}
-  u_t - \Delta u + \alert<2>{\nabla\cdot (u \nabla v)} &= 0,
+  \alert<1>{u_t - \Delta u + \mathcal{X}\; \alert<2>{\nabla\cdot (u \structure<1-2>{\nabla v})} = 0},&
   \\
-  v_t - \Delta v + v - u &= 0,
+  \structure<1>{v_t - \Delta v + v - \alert<1>{u} = 0},&
   \\
-  + \text{ condiciones }&\text{iniciales y de contorno.}
+  {\color{gray}+ \text{ condiciones iniciales }}&\text{\color{gray}y de contorno.}
 \end{align*}
+\vspace{-1.5em}
 \begin{itemize}
 \item <2> Término de \alert{quimioatracción} de $u$ hacia $\nabla v$ !!!
-\item Retos:
+  \begin{itemize}
+  \item $\mathcal{X}>0$, amplitud de la quimioatracción
+  \end{itemize}
+\item <2> Retos:
   \begin{itemize}
   \item Análisis matemático (explosión en tiempo finito)
   \item Aproximación numérica (EDP de tipo parabólico/\alert{hiperbólico} !!)
@@ -573,15 +586,19 @@ $v(x,t)$, \alert<1>{estímulo químico}, solución del sistema de EDP:
 \end{frame}
 
 \begin{frame}{Modelo de migración de neuroblastos hacia OB}
+  \vspace{-0.8em}
+  \begin{overprint}
+    \onslide<1>\centering\includegraphics[width=0.64\linewidth]{img/ecuacion_nb_OB-0.png}
+    \onslide<2>\centering\includegraphics[width=0.64\linewidth]{img/ecuacion_nb_OB-1.png}
+    \onslide<3->\centering\includegraphics[width=0.64\linewidth]{img/ecuacion_nb_OB-2.png}
+  \end{overprint}
   \bigskip
-    \begin{flushright}
-    \includegraphics[width=0.4\linewidth]{img/neuroblastos-roedor-anotado}
-    \end{flushright}
-    $$
-
-    $$
+  \begin{itemize}\itemsep0.2em
+  \item<2-> $\mathcal{O}(x)$: función «atracción química» por {\color{OBcolor}\textbf{\textit{OB}}}
+  \item<3-> Parámetros: $ \mathcal{X}$, $\alpha$, $\beta$, «forma de $\mathcal{O}(x)$»
+    \onslide<4>{\alert<4>{... \textbf{anisotropía}~\includegraphics<4>[height=\baselineskip]{img/icons8-innovation-64}}}
+  \end{itemize}
 \end{frame}
-
 
 % #################### REDES NEURONALES #####################
 
@@ -843,6 +860,7 @@ $v(x,t)$, \alert<1>{estímulo químico}, solución del sistema de EDP:
   \item Isobaras. MediaCommons, User:Asierog, licencia CC-by-sa.
   \item NOAA Wavewatch III 120-hour wind and wave forecast for the
     North Atlantic. Public domain.
+  \item Innovation icon, freely available from \url{https://icons8.com}
   \end{enumerate}
 \end{frame}
 
