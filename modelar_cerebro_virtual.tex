@@ -600,6 +600,27 @@ Ecuaciones de Keller-Segel (sistema de EDP)...
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Resolución numérica}
+  \begin{itemize}
+    \item \textbf{Discretización en \alert{tiempo}}: método de Euler (Implícito)
+    $$
+    u^{n+1} = u^n - \Delta t \big( \mathcal{X}\,\nabla\cdot(u^{n+1} \nabla\mathcal{O})
+    + \alpha u^{n+1} -\beta \mathbf{1}_{SVZ} \big)
+    $$
+  \item \textbf{Discretización en \alert{espacio}}: método de Galerkin (Discontinuo)
+    \begin{tabular*}{\linewidth}{ll}
+      \begin{minipage}{0.6\linewidth}
+        \begin{itemize}
+        \item Mallado del dominio espacial
+        \item Aproximación ``$P0$'' de la solución (polinomios de grado $m=0$ en cada triángulo)
+        \end{itemize}
+      \end{minipage}
+      &
+        \includegraphics[width=0.3\linewidth]{img/brain_mesh}
+    \end{tabular*}
+  \end{itemize}
+\end{frame}
+
 % #################### REDES NEURONALES #####################
 
 \begin{frame}{¿Qué son las redes neuronales?}
