@@ -70,7 +70,7 @@
   \\[0.2em]
   {\small \em Grado en Matemáticas}
   \\[0.2em]
-  {\scriptsize Puerto Real, 22/11/2022}
+  {\scriptsize Puerto Real, 21/11/2023}
   \\[1em]
   \includegraphics[width=2.5em]{img/cc-by}
 }
@@ -626,6 +626,37 @@ Ecuaciones de Keller-Segel (sistema de EDP)...
   \item<3-> Parámetros: $ \mathcal{X}$, $\alpha$, $\beta$, «forma de $\mathcal{O}(x)$»
     \onslide<4>{\alert<4>{... \textbf{anisotropía}~\includegraphics<4>[height=\baselineskip]{img/icons8-innovation-64}}}
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Resolución numérica}
+    \textbf{Discretización en \alert{tiempo}}: método de Euler (Implícito)
+    \begin{equation}
+    u^{n+1} = u^n - \Delta t \cdot \big( \mathcal{X}\,\nabla\cdot(u^{n+1} \nabla\mathcal{O})
+    + \alpha u^{n+1} -\beta \mathbf{1}_{SVZ} \big)
+    \label{eq:1}
+  \end{equation}
+
+  \textbf{Discretización en \alert{espacio}}: método de Galerkin (Discontinuo)
+  \par\medskip
+    \begin{tabular*}{\linewidth}{ll}
+      \begin{minipage}{0.66\linewidth}
+        \small
+        \begin{itemize}
+        \item Mallado del dominio espacial
+        \item Aproximación ``$P0$'' de la solución: polinomios de grado $m=0$ en cada triángulo
+        \item Multiplicamos~(\ref{eq:1}) por funciones test (en triángulos) en integramos por partes.
+          \begin{itemize}
+          \item Saltos (flujos) en las aristas
+        \end{itemize}
+      \item En cada etapa de tiempo, resolución de un gran sistema de ecuaciones.
+        \begin{itemize}
+        \item Incógnitas: solución en cada triángulo
+      \end{itemize}
+        \end{itemize}
+      \end{minipage}
+      &
+        \includegraphics[width=0.31\linewidth]{img/brain_mesh}
+    \end{tabular*}
 \end{frame}
 
 % #################### REDES NEURONALES #####################
